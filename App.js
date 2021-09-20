@@ -1,31 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {Navbar} from './src/Navbar';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Welcome</Text>
-      <Text style={styles.text}>Hello Alex</Text>
+        <Navbar title="Todo App" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     backgroundColor: 'black',
-    fontSize: 24
+    flex: 1,
   },
-  headerText: {
-    fontSize: 26,
-    color: '#fff'
-  },
-  text: {
-    fontSize: 22,
-    color: '#fff'
-  }
 });
