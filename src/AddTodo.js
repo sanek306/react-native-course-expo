@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { View, StyleSheet, TextInput, Button } from 'react-native';
 
 export const AddTodo = ({ onSubmit }) => {
     const pressHandler = () => {
