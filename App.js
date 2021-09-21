@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { AddTodo } from './src/AddTodo';
 import {Navbar} from './src/Navbar';
 import { Todo } from './src/Todo';
@@ -21,7 +21,7 @@ export default function App() {
   }
 
   return (
-    <View>
+    <ScrollView style={styles.wrapper}>
         <Navbar title="Todo App" />
         <View style={styles.container}>
           <AddTodo onSubmit={addTodo} />
@@ -31,11 +31,14 @@ export default function App() {
             ))}
           </View>
         </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   container: {
     paddingHorizontal: 30,
     paddingVertical: 20,
