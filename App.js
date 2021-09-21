@@ -20,6 +20,12 @@ export default function App() {
       ]));
   }
 
+  const removeTodo = (id) => {
+    setTodos(prevTodos => (
+      prevTodos.filter(todo => todo.id !== id)
+    ));
+  }
+
   return (
     <View style={styles.wrapper}>
         <Navbar title="Todo App" />
@@ -28,9 +34,10 @@ export default function App() {
           <FlatList 
             data={todos}
             renderItem={({ item }) => (
-              <Todo todo={item} />
+              <Todo todo={item} onRemove={removeTodo} />
             )}
             keyExtractor={item => item.id.toString()}
+            showsVerticalScrollIndicator={false}
           />
         </View>
     </View>
@@ -41,5 +48,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
     paddingVertical: 20,
+    height: '100%',
+    paddingTop: 80,
   },
 });

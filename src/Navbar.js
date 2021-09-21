@@ -16,7 +16,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-end',
         backgroundColor: '#3949ab',
-        paddingBottom: 10
+        paddingBottom: 10,
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+        zIndex: 1,
     },
     text: {
         color: 'white',
