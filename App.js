@@ -5,8 +5,10 @@ import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
 
 export default function App() {
-  const [todoId, setTodoId] = useState(null);
-  const [todos, setTodos] = useState([]);
+  const [todoId, setTodoId] = useState(1);
+  const [todos, setTodos] = useState([{
+    id: 1, title: 'Написать приложение'
+  }]);
 
   const addTodo = (title) => {
       const newTodo = {
@@ -31,15 +33,17 @@ export default function App() {
       todos={todos}
       addTodo={addTodo}
       removeTodo={removeTodo}
+      openTodo={setTodoId}
     />
   );
 
   if (todoId) {
-    content = <TodoScreen/>
+    const selectedTodo = todos.find(({ id }) => id === todoId);
+    content = <TodoScreen goBack={() => setTodoId(null)} todo={selectedTodo} />
   }
 
   return (
-    <View style={styles.wrapper}>
+    <View>
         <Navbar title="Todo App" />
         <View style={styles.container}>
           {content}
@@ -48,11 +52,13 @@ export default function App() {
   );
 }
 
+const headerHeight = 80;
+const padding = 30;
+
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
-    paddingVertical: 20,
+    paddingHorizontal: padding,
     height: '100%',
-    paddingTop: 80,
+    paddingTop: headerHeight + padding,
   },
 });

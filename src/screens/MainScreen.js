@@ -6,6 +6,7 @@ import { Todo } from '../components/Todo';
 export const MainScreen = ({ 
     todos,
     addTodo,
+    openTodo,
     removeTodo
 }) => {
 
@@ -16,7 +17,7 @@ export const MainScreen = ({
             <FlatList 
                 data={todos}
                 renderItem={({ item }) => (
-                    <Todo todo={item} onRemove={removeTodo} />
+                    <Todo todo={item} onRemove={removeTodo} openTodo={openTodo} />
                 )}
                 keyExtractor={item => item.id.toString()}
                 showsVerticalScrollIndicator={false}
