@@ -5,10 +5,12 @@ import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
 
 export default function App() {
-  const [todoId, setTodoId] = useState(1);
-  const [todos, setTodos] = useState([{
-    id: 1, title: 'Написать приложение'
-  }]);
+  const [todoId, setTodoId] = useState(null);
+  const [todos, setTodos] = useState([]);
+
+  // {
+  //   id: 1, title: 'Написать приложение'
+  // }
 
   const addTodo = (title) => {
       const newTodo = {
@@ -79,7 +81,7 @@ export default function App() {
   }
 
   return (
-    <View>
+    <View style={styles.wrap}>
         <Navbar title="Todo App" />
         <View style={styles.container}>
           {content}
@@ -92,6 +94,9 @@ const headerHeight = 80;
 const padding = 30;
 
 const styles = StyleSheet.create({
+  wrap: {
+    flex: 1,
+  },
   container: {
     paddingHorizontal: padding,
     height: '100%',
