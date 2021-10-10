@@ -3,10 +3,20 @@ import { StyleSheet, View, Alert } from 'react-native';
 import {Navbar} from './src/components/Navbar';
 import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
+import { useFonts } from 'expo-font';
 
 export default function App() {
   const [todoId, setTodoId] = useState(null);
   const [todos, setTodos] = useState([]);
+
+  const [loaded] = useFonts({
+    'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf'),
+  });
+  
+  if (!loaded) {
+    return null;
+  }
 
   // {
   //   id: 1, title: 'Написать приложение'
