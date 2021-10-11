@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View, StyleSheet, TextInput, Button, Modal, Alert} from 'react-native';
+import { View, StyleSheet, TextInput, Modal, Alert} from 'react-native';
 import { THEME } from '../theme';
 import { AppButton } from './ui/AppButton';
 
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     input: {
         padding: 10,
