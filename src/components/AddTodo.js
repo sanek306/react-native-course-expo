@@ -13,9 +13,8 @@ export const AddTodo = ({ onSubmit }) => {
             setValue('');
             Keyboard.dismiss();
         } else {
-            Alert.alert('Название дела не может быть пустым');
+            Alert.alert('Название дела не может быть пустым!');
         }
-
     }
 
     return (
