@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import { EditModal } from '../components/EditModal';
 
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     button: {
-        minWidth: 100
+        width: Dimensions.get('window').width / 3
+        // width: Dimensions.get('window').width > 400 ? 150 : 100
     }
 });
   
