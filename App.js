@@ -4,6 +4,7 @@ import {Navbar} from './src/components/Navbar';
 import { MainScreen } from './src/screens/MainScreen';
 import { TodoScreen } from './src/screens/TodoScreen';
 import { useFonts } from 'expo-font';
+import { THEME } from './src/theme';
 
 export default function App() {
   const [todoId, setTodoId] = useState(null);
@@ -100,16 +101,13 @@ export default function App() {
   );
 }
 
-const headerHeight = 80;
-const padding = 30;
-
 const styles = StyleSheet.create({
   wrap: {
     flex: 1,
   },
   container: {
-    paddingHorizontal: padding,
+    paddingHorizontal: THEME.PADDING_HORIZONTAL,
     height: '100%',
-    paddingTop: headerHeight + padding,
+    paddingTop: THEME.HEADER_HEIGHT + THEME.PADDING_HORIZONTAL,
   },
 });
