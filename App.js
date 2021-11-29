@@ -2,6 +2,7 @@ import React from 'react';
 import { useFonts } from 'expo-font';
 import { MainLayout } from './src/MainLayout';
 import { TodoState } from './src/context/todo/TodoState';
+import { ScreenState } from './src/context/screen/ScreenState';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -14,8 +15,10 @@ export default function App() {
   }
 
   return (
-    <TodoState>
-      <MainLayout />
-    </TodoState>
+    <ScreenState>
+      <TodoState>
+        <MainLayout />
+      </TodoState>
+    </ScreenState>
   );
 }
