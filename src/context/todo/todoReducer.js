@@ -17,18 +17,12 @@ const handlers = {
   }),
   [UPDATE_TODO]: (state, {id, title}) => ({
     ...state,
-    todos: [
-      ...state.todos,
-      {
-        ...state,
-        todos: state.todos.map((todo) => {
-          if (todo.id === id) {
-            todo.title = title;
-          }
-          return todo;
-        })
+    todos: state.todos.map((todo) => {
+      if (todo.id === id) {
+        return {...todo, title };
       }
-    ]
+      return todo;
+    })
   }),
   DEFAULT: (state) => state,
 }
