@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { View, StyleSheet, FlatList, Image, Dimensions } from 'react-native';
 import { AddTodo } from '../components/AddTodo';
 import { Todo } from '../components/Todo';
+import { AppLoader } from '../components/ui/AppLoader';
 import { ScreenContext } from '../context/screen/screenContext';
 import { TodoContext } from '../context/todo/todoContext';
 import { THEME } from '../theme';
@@ -10,7 +12,9 @@ export const MainScreen = () => {
     const { 
         todos,
         addTodo,
-        removeTodo
+        removeTodo,
+        fetchTodos,
+        loading,
      } = useContext(TodoContext);
      const { 
         changeScreen,
@@ -31,7 +35,17 @@ export const MainScreen = () => {
         }
     })
 
+    const loadTodos = useCallback(async () => await fetchTodos(), [fetchTodos])
 
+    useEffect(() => {
+        loadTodos();
+    }, [])
+
+
+    if (loading) {
+        return <AppLoader />
+    }
+    
     let content = (
         <View style={{ width: deviceWidth }}>
             <FlatList 
