@@ -1,9 +1,10 @@
-import { SimpleLineIcons } from '@expo/vector-icons';
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { View, StyleSheet, FlatList, Image, Dimensions } from 'react-native';
 import { AddTodo } from '../components/AddTodo';
 import { Todo } from '../components/Todo';
 import { AppLoader } from '../components/ui/AppLoader';
+import { AppText } from '../components/ui/AppText';
+import { AppButton } from '../components/ui/AppButton';
 import { ScreenContext } from '../context/screen/screenContext';
 import { TodoContext } from '../context/todo/todoContext';
 import { THEME } from '../theme';
@@ -15,6 +16,7 @@ export const MainScreen = () => {
         removeTodo,
         fetchTodos,
         loading,
+        error
      } = useContext(TodoContext);
      const { 
         changeScreen,
@@ -44,6 +46,16 @@ export const MainScreen = () => {
 
     if (loading) {
         return <AppLoader />
+    }
+    if (error) {
+        return (
+            <View style={styles.center}>
+                <AppText style={styles.error}>{error}</AppText>
+                <AppButton onPress={loadTodos}>
+                    Повторить
+                </AppButton>
+            </View>
+        )
     }
     
     let content = (
@@ -89,6 +101,15 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%'
+    },
+    error: {
+        color: THEME.DANGER_COLOR,
+        fontSize: 20
+    },
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
   
