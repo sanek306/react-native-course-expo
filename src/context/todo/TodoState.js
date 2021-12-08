@@ -82,9 +82,6 @@ export const TodoState = ({ children }) => {
     const clearError = () => {
         dispatch({ type: CLEAR_ERROR });
     }
-    
-    // REMOVE_TODO,
-    // FETCH_TODOS,
 
     const removeTodo = (id) => {
         const todo = state.todos.find((t) => t.id === id);
@@ -99,9 +96,24 @@ export const TodoState = ({ children }) => {
             {
                 text: "Удалить",
                 style: "destructive",
-                onPress: () => {
+                onPress: async () => {
                     changeScreen(null);
-                    dispatch({ type: REMOVE_TODO, id });
+                    clearError();
+                    try {
+                        await fetch(
+                            `https://react-native-todo-app-ff28c-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            },
+                        )
+                        dispatch({ type: REMOVE_TODO, id });
+                    }
+                    catch (e) {
+                        showError('Что-то пошло не так...');
+                        console.log(e);
+                    }
                 },
             },
             ],
